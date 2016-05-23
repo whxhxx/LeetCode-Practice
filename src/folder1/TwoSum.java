@@ -1,11 +1,13 @@
 package folder1;
 
+import java.util.HashMap;
+
 public class TwoSum 
 {
 	public static void main(String[] args) 
 	{
 		int []exam = {1,3,7,5,8};
-  		int []b = twoSum1(exam, 11);
+  		int []b = twoSum2(exam, 15);
  		System.out.println(b[0]+" "+b[1]);
 	}
 
@@ -26,5 +28,23 @@ public class TwoSum
         return res;
     }
 
+ 	public static int[] twoSum2(int[] nums, int target)
+ 	{
+ 		 
+ 		HashMap<Integer, Integer> theMap = new HashMap<Integer, Integer>();
+ 		for(int i = 0; i < nums.length; i++)
+ 		{
+ 			if( theMap.containsKey(target - nums[i]))
+ 			{
+ 				return new int[]{theMap.get(target - nums[i]), i};
+ 			}
+ 			else 
+ 			{
+ 				theMap.put(nums[i], i);
+			}
+ 		}
+ 		
+ 		throw new IllegalArgumentException("no matching numbers");
+ 	}
 
 }
